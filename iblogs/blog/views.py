@@ -10,3 +10,8 @@ def home(request):
         'posts': posts
     }
     return render(request, 'home.html', data)
+
+
+def post(request,url):
+    post = Post.objects.get(url=url)
+    return render(request, 'posts.html', {'post': post})
