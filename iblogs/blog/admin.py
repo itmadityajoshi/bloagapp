@@ -7,9 +7,14 @@ from .models import Category, Post
 #configurations of category admin
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display= ('title', 'description', 'url', 'add_date')
+    list_display= ('image_tag','title', 'description', 'url', 'add_date')
+    search_fields = ('title',)
 
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title','cat','url')
+    search_fields = ('title',)
+    list_filter = ('cat',)
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Post)
+admin.site.register(Post, PostAdmin)
 
